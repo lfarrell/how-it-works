@@ -50,7 +50,7 @@ function stack() {
         .style("top", 0)
         .style("width", "100%");
 
-    var indicator = d3.select("body").append("div")
+  /*  var indicator = d3.select("body").append("div")
         .attr("class", "indicator")
       .selectAll("div")
         .data(d3.range(section.size()))
@@ -59,7 +59,7 @@ function stack() {
         .style("z-index", 10)
         .style("left", 0)
         .style("width", "3px")
-        .style("background", "linear-gradient(to top,black,white)");
+        .style("background", "linear-gradient(to top,black,white)"); */
 
     var sectionPrevious = d3.select(null),
         sectionCurrent = d3.select(section[0][0]),
@@ -130,10 +130,10 @@ function stack() {
     sectionAndBackground
         .style("top", (windowHeight - sectionHeight) / 2 + "px")
         .style("height", sectionHeight + "px");
-
+/*
     indicator
         .style("top", function(i) { return (i + (1 - scrollRatio) / 2) * windowHeight + "px"; })
-        .style("height", windowHeight * scrollRatio + "px");
+        .style("height", windowHeight * scrollRatio + "px"); */
 
     body
         .style("font-size", innerWidth / size[0] * fontSize + "px")
