@@ -95,7 +95,7 @@ var startEnergy = function () {
 };
 
 var stopEnergy = function() {
-
+    energy_svg.stop();
 };
 
 /**
@@ -124,9 +124,8 @@ var startTsunami = function() {
     d3.select('#tsunami_circle_one').style('fill', 'redbrick');
 
     tsunamiInterval = setInterval(function() {
-        circle_zero.attr('r',  radius + timer);
-
         if(timer < 16) {
+            circle_zero.attr('r',  radius + timer);
             d3.select('#clock').text(timer + ':00');
         }
         timer++;
