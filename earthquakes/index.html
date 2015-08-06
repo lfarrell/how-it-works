@@ -1,47 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Earthqukes and how they work, earthquake visualizations" />
-    <meta name="keywords" content="Earthqukes, tsunamis, earthquake visualizations, tsunami visualizations"/>
+    <meta name="description" content="Earthquakes and how they work, earthquake visualizations" />
+    <meta name="keywords" content="Earthquakes, tsunamis, earthquake visualizations, tsunami visualizations"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 <section id="intro">
-    <h2>Introduction</h2>
+    <h3>Introduction</h3>
     <p></p>
 </section>
 <section id="waves">
-    <h2>Movement of Earthquake Energy</h2>
+    <h3>Movement of Earthquake Energy</h3>
     <p>An earthquake first sends out a cosine wave. Thie is a slow moving wave with a low periodcity. Periodcity is the crest
         from one wave to the next crest.</p>
-    <svg><g></g></svg>
+    <svg id="slow_wave"><g></g></svg>
     <p>These are followed by sine waves, with much higher periodcity. This type of wave causes the destruction commonly associated
     with earthquakes and can last from several seconds for small quakes to five minutes or beyond for the largest quakes.</p>
-    <svg><g></g></svg>
+    <svg id="fast_wave"><g></g></svg>
 </section>
 <section id="types">
-    <h2>Types of Earthquakes</h2>
+    <h3>Types of Earthquakes</h3>
     <p></p>
     <svg><g></g></svg>
 </section>
 <section id="energy">
-    <h2>Energy Released by Earthquakes</h2>
+    <h3>Energy Released by Earthquakes</h3>
     <p>You might think there isn't much difference between a magnitude 5.0 and a magnitude 6.0 earthquake. Earthquakes
     are measured on a logarithmic scale. This means that a magnitude 5.1 earthquake is 10 times stronger than a magnitude 5.0
     earthquake.</p>
     <p id="text_5">Let's say the small circle below represents the energy released by a magnitude 5.0 earthquake</p>
-    <p id="text_55" class="hide">The next circle represents the energy released by a magnitude 5.5 earthquake.</p>
-    <p id="text_6" class="hide">The final circle represents the energy released by a magnitude 6.0 earthquake.</p>
+ <!--   <p id="text_55" class="hide">The next circle represents the energy released by a magnitude 5.5 earthquake.</p>
+    <p id="text_6" class="hide">The final circle represents the energy released by a magnitude 6.0 earthquake.</p> -->
     <p>A magnitude 9.0 earthquake would, depending on your screen size, turn your entire screen red, releasing 1,000,000 times more
     energy than a magnitude 5.0 earthquake.</p>
     <svg><g></g></svg>
 </section>
 <section id="tsunamis">
-    <h2>Tsunamis</h2>
+    <h3>Tsunamis</h3>
     <p></p>
-    <div id="clock"></div>
+    <div>Minutes after quake start: <span id="clock"></span>:00</div>
     <svg><g></g></svg>
 </section>
 <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>

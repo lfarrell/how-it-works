@@ -1,24 +1,24 @@
 section {
     background: #333;
     color: #fff;
-    padding: 2.5em;
+    padding: 2em;
     font-family: "Lato", sans-serif;
 }
 
-section h2 {
+section h3 {
     text-align: center;
 }
 
 section p {
     text-indent: 10px;
     line-height: 1em;
-    font-size: 1em;
+    font-size: .5em;
 }
 
 section .hide {
     display: none;
 }
 
-section #clock {
-    font-size: 1.5em;
+section circle {
+    fill: firebrick;
 }
