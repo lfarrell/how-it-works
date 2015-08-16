@@ -27,13 +27,37 @@ d3.selectAll('svg').attr('width', width).attr('height', 500);
  *
  */
 var quake_waves = d3.select('#waves svg g');
+var wave = d3.select('#wave');
+var offset = Math.round(width * .16);
+var path_one = "M 10 25 L " + (width - offset) + " 25";
+var path_two = "M 10 125 L " + (width - offset) + " 125";
+var distancePerPoint = 1;
+var drawFPS = 60;
+var orig = document.querySelector('path'), length, timer;
+
+d3.select('#slow_wave path').attr('d', path_one);
+d3.select('#fast_wave path').attr('d', path_two);
+
+/**
+ * Per http://stackoverflow.com/questions/14275249/how-can-i-animate-a-progressive-drawing-of-svg-path?lq=1
+ */
+function increaseLength(){
+    var pathLength = orig.getTotalLength();
+    length += distancePerPoint;
+    orig.style.strokeDasharray = [length,pathLength].join(' ');
+    if (length >= pathLength) clearInterval(timer);
+}
 
 var startWave = function() {
-
+    length = 0;
+    orig.style.stroke = 'firebrick';
+    timer = setInterval(increaseLength,1000/drawFPS);
 };
 
 var stopWave = function() {
-
+    clearInterval(timer);
+    orig.style.stroke = '';
+    orig.style.strokeDasharray = '';
 };
 /**
  * Earthquake types
@@ -89,7 +113,7 @@ var startEnergy = function () {
         .attr({
             'r': quake_energy_released(5.5, 5.0) * 5,
             'cx': 40,
-            'cy': 80,
+            'cy': 75,
             "transform": "translate(" + width/6 + "," + height/6 + ")"
         });
 
@@ -128,24 +152,28 @@ var startTsunami = function() {
         .attr({
             cx: 80,
             cy: 80,
-            r: radius,
-            stroke: 1
+            r: radius
         })
         .attr('id', function(d) { return 'tsunami_circle_' + d; })
         .style('stroke-color', 'firebrick');
 
-    var circle_zero = d3.select('#tsunami_circle_zero');
-    circle_zero.style('fill', 'none');
+    var circle_zero = d3.select('#tsunami_circle_0');
+    circle_zero.style({
+        'fill': 'none',
+        'stroke': 'red',
+        'stroke-width': 1.5
+    });
 
-    d3.select('#tsunami_circle_one').style('fill', 'redbrick');
+    d3.select('#tsunami_circle_1').style('fill', 'redbrick');
 
     tsunamiInterval = setInterval(function() {
         if(timer < 16) {
-            circle_zero.attr('r',  radius + timer);
+            var current_radius = circle_zero.attr('r');
+            circle_zero.attr('r',  +current_radius + 5);
             d3.select('#clock').text(timer);
         }
         timer++;
-    }, 1000);
+    }, 200);
 };
 
 var stopTsunami = function() {
@@ -165,7 +193,7 @@ function activate(d, i) {
 
 function deactivate(d, i) {
     if (i === waveIndex) stopWave();
-    if (i === typeIndex) stopType();
-    if (i === energyIndex) stopEnergy();
+    /*  if (i === typeIndex) stopType();
+    if (i === energyIndex) stopEnergy();*/
     if (i === tsunamiIndex) stopTsunami();
 }
